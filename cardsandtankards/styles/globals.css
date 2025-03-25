@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Mordred";
+  src: url("/fonts/Mordred-Bold.ttf");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4{
+  font-family: "Mordred";
+}
+
+.subheader-bg{
+  background-image: url('/media/pictures/dev_team.png');
+  background-size: cover;
+  background-position: top 55% left 50%;
+}
+
+.community-bg{
+  background-image: url('/media/pictures/barkeep.jpg');
+  background-size: cover;
+  background-position: top 40% left 50%;
+}
+
+.taverns{
+  background-image: url('/media/pictures/bar.jpg');
+  background-size: cover;
+  background-position: top 50% right 38%;
+}
+
+.crossplay{
+  background-image: url('/media/pictures/Quest_Mixed_Reality.png');
+  background-size: cover;
+  background-position: top 50% left 15%;
+}
+
+.moderation{
+  background-image: url('/media/pictures/barkeep.jpg');
+  background-size: cover;
+  background-position: top 50% right 43%;
+}
+
+.confirmation-bg{
+  background-image: url('/media/pictures/hero_backup_img.jpg');
+  background-size: cover;
+  background-position: top 50% left 50%;
+} 
+
+.search-bg{
+  background-image: url('/media/pictures/cardcollection.png');
+  background-size: cover;
+  background-position: top 4% left 50%;
+} 
+
+.book-bg{
+  background-image: url('/media/pictures/book.png');
+  background-size: cover;
+  background-position: top 50% left 50%;
+} 
+
+.shadow1 {
+  -webkit-box-shadow: -0px -25px 0px 12px rgb(133, 15, 0);
+  -moz-box-shadow: -0px -25px 0px 12px rgb(133, 15, 0);
+  box-shadow: -0px -25px 0px 12px rgb(133, 15, 0);
+
+}
+
+.shadow2 {
+  -webkit-box-shadow: 30px -25px 0px 6px rgb(133, 15, 0);
+  -moz-box-shadow: 30px -25px 0px 6px rgb(133, 15, 0);
+  box-shadow: 30px -25px 0px 6px rgb(133, 15, 0);
+}
+
+.shadow3 {
+  -webkit-box-shadow: 0px -25px 0px 12px rgba(230,165,0,1);
+  -moz-box-shadow: 0px -25px 0px 12px rgba(230,165,0,1);
+  box-shadow: 0px -25px 0px 12px rgba(230,165,0,1);
+}
+
+.text-outline{
+  -webkit-text-stroke: 2px black;
+  font-family: "Kanit", sans-serif;
+}
+
+.scrollbar::-webkit-scrollbar{
+  width:5px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb{
+  background: gray;
+  border-radius: 10px;
+}
