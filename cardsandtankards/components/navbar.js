@@ -128,7 +128,7 @@ const Navbar = () => {
 			{/* Mobile Menu (hidden by default, shown when menu is opened) */}
 			<div
 				ref={menuRef}
-				className={`md:hidden fixed top-0 right-0 w-3/4 h-svh pt-28 bg-neutral-800 transform transition-transform ease-in-out duration-300 z-40 ${
+				className={`md:hidden fixed top-0 right-0 w-3/4 min-h-svh max-h-screen pt-28 bg-neutral-800 transform transition-transform ease-in-out duration-300 z-40 ${
 					isMenuOpen ? "translate-x-0" : "translate-x-full"
 				}`}
 			>
