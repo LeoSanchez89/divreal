@@ -147,6 +147,7 @@ const CardModal = ({ closeModal, selectedCard }) => {
 												<img
 													className="w-6 sm:w-8"
 													src={`./media/pictures/${kw}.png`}
+													alt="ability icon"
 													onError={(e) => (e.target.style.display = "none")}
 												/>
 											)}

@@ -1,4 +1,5 @@
 import Layout from "../components/layout";
+import Link from "next/link";
 
 const Confirmation = () => {
 	const title = "Cards & Tankards - Message Sent";
@@ -12,14 +13,14 @@ const Confirmation = () => {
 						</h1>
 						<p className="text-white sm:font-semibold 2xl:text-lg max-w-prose mx-auto px-8 py-2 pb-7 md:py-3 md:pb-8 md:p-x-0">
 							Your message has been sent. Be sure to check your inbox and spam
-							folders so you don't miss us. See you in the Taverns.
+							folders so you don&apos;t miss us. See you in the Taverns.
 						</p>
-						<a
+						<Link
 							href="/"
 							className="uppercase text-white font-bold border py-2 px-4 rounded hover:ease duration-300 hover:border-amber-500 hover:shadow-lg hover:shadow-amber-700/50"
 						>
 							Take me home
-						</a>
+						</Link>
 					</div>
 				</div>
 			</section>

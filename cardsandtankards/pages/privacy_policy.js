@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
 							<li>
 								<strong>Affiliate</strong> means an entity that controls, is
 								controlled by or is under common control with a party, where
-								"control" means ownership of 50% or more of the shares, equity
+								&quot;control&quot; means ownership of 50% or more of the shares, equity
 								interest or other securities entitled to vote for election of
 								directors or other managing authority.
 							</li>
@@ -74,8 +74,8 @@ const PrivacyPolicy = () => {
 								Cards & Tankards
 							</li>
 							<li>
-								<strong>Company</strong> (referred to as either "the Company",
-								"We", "Us" or "Our" in this Agreement) refers to Divergent
+								<strong>Company</strong> (referred to as either &quot;the Company&quot;,
+								&quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Divergent
 								Realities, LLC, 18788 Marsh Ln #730.
 							</li>
 							<li>
@@ -166,7 +166,7 @@ const PrivacyPolicy = () => {
 									Usage Data is collected automatically when using the Service.
 								</p>
 								<p className="pb-2">
-									Usage Data may include information such as Your Device's
+									Usage Data may include information such as Your Device&apos;s
 									Internet Protocol address (e.g. IP address), browser type,
 									browser version, the pages of our Service that You visit, the
 									time and date of Your visit, the time spent on those pages,
@@ -193,7 +193,7 @@ const PrivacyPolicy = () => {
 								<p className="pb-2">
 									During the utilization of our Service, we automatically
 									capture and retain the last few minutes of your and other
-									users' audio for the explicit purpose of verifying
+									users&apos; audio for the explicit purpose of verifying
 									user-submitted reports. These audio recordings are stored in a
 									local repository on your personal device. Access to these
 									audio recordings is strictly contingent upon the submission of
@@ -202,7 +202,7 @@ const PrivacyPolicy = () => {
 								</p>
 								<p className="pb-2">
 									Upon receipt of a report, we proceed to collect and securely
-									store the pertinent audio recording from the reporting user's
+									store the pertinent audio recording from the reporting user&apos;s
 									device. This retention persists throughout the course of the
 									investigation until the resolution of the reported issue or
 									incident. Other users in proximity may also contribute audio
@@ -248,8 +248,8 @@ const PrivacyPolicy = () => {
 										activity on our Service. Flash Cookies are not managed by
 										the same browser settings as those used for Browser Cookies.
 										For more information on how You can delete Flash Cookies,
-										please read "Where can I change the settings for disabling,
-										or deleting local shared objects?" available{" "}
+										please read &quot;Where can I change the settings for disabling,
+										or deleting local shared objects?&quot; available{" "}
 										<a
 											href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
 											target="_blank"
@@ -272,7 +272,7 @@ const PrivacyPolicy = () => {
 									</li>
 								</ul>
 								<p>
-									Cookies can be "Persistent" or "Session" Cookies. Persistent
+									Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent
 									Cookies remain on Your personal computer or mobile device when
 									You go offline, while Session Cookies are deleted as soon as
 									You close Your web browser. You can learn more about cookies
@@ -377,7 +377,7 @@ const PrivacyPolicy = () => {
 							<li>
 								<strong>To contact You:</strong> To contact You by email,
 								telephone calls, SMS, or other equivalent forms of electronic
-								communication, such as a mobile application's push notifications
+								communication, such as a mobile application&apos;s push notifications
 								regarding updates or informative communications related to the
 								functionalities, products or contracted services, including the
 								security updates, when necessary or reasonable for their
@@ -479,7 +479,7 @@ const PrivacyPolicy = () => {
 						</h3>
 						<p>
 							Your information, including Personal Data, is processed at the
-							Company's operating offices and in any other places where the
+							Company&apos;s operating offices and in any other places where the
 							parties involved in the processing are located. It means that this
 							information may be transferred to — and maintained on — computers
 							located outside of Your state, province, country or other
@@ -568,7 +568,7 @@ const PrivacyPolicy = () => {
 
 				<div>
 					<h2 className="text-3xl sm:text-4xl 2xl:text-5xl font-bold py-4">
-						Children's Privacy
+						Children&apos;s Privacy
 					</h2>
 					<p>
 						Our Service does not address anyone under the age of 13. We do not
@@ -582,7 +582,7 @@ const PrivacyPolicy = () => {
 					<p className="py-2">
 						If We need to rely on consent as a legal basis for processing Your
 						information and Your country requires consent from a parent, We may
-						require Your parent's consent before We collect and use that
+						require Your parent&apos;s consent before We collect and use that
 						information.
 					</p>
 				</div>
@@ -593,7 +593,7 @@ const PrivacyPolicy = () => {
 					<p>
 						Our Service may contain links to other websites that are not
 						operated by Us. If You click on a third party link, You will be
-						directed to that third party's site. We strongly advise You to
+						directed to that third party&apos;s site. We strongly advise You to
 						review the Privacy Policy of every site You visit.
 					</p>
 					<p className="py-2">
@@ -621,8 +621,8 @@ const PrivacyPolicy = () => {
 					</p>
 					<p className="py-2">
 						We will let You know via email and/or a prominent notice on Our
-						Service, prior to the change becoming effective and update the "Last
-						updated" date at the top of this Privacy Policy.
+						Service, prior to the change becoming effective and update the &quot;Last
+						updated&quot; date at the top of this Privacy Policy.
 					</p>
 					<p>
 						You are advised to review this Privacy Policy periodically for any
