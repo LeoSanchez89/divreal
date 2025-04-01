@@ -235,7 +235,7 @@ const Debounce = (value, delay) => {
 // };
 
 // filter search terms w/debounce
-const filterCards = (cards, debouncedSearchTerm, filter) => {
+const filterCards = (cards, debouncedSearchTerm = "", filter, manCostAndFactionOnly = false) => {
 	return cards.filter((card) => {
 		const matchesSearch =
 			card.Name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
@@ -257,6 +257,9 @@ const filterCards = (cards, debouncedSearchTerm, filter) => {
 			? card.FactionType === Number(filter.faction)
 			: true;
 
+		if (manCostAndFactionOnly) {
+			return matchesManaCost && matchesFaction;
+		}
 		const matchesCardType = filter.cardType
 			? card.CardType === Number(filter.cardType)
 			: true;
