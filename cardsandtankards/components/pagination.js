@@ -40,20 +40,22 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 	};
 
 	useEffect(() => {
-        window.scrollTo({ top: 0 });
-	}, [currentPage]); 
+		window.scrollTo({ top: 0 });
+	}, [currentPage]);
 
 	return (
 		totalPages > 1 && (
-			<div className="max-w-screen-xl mx-auto flex justify-center sm:justify-end sm:pr-10 ">
+			<div className="max-w-screen-xl mx-auto flex justify-center items-center sm:justify-end sm:pr-10 ">
 				{/* left arrow  */}
 				<button
 					onClick={() => {
 						if (currentPage > 1) handlePageChange(currentPage - 1);
 					}}
 					disabled={currentPage === 1}
-					className={`mr-1.5 w-[1.5rem] ${
-						currentPage === 1 ? "brightness-50" : "brightness-100 cursor-pointer"
+					className={`mr-1.5 w-10 sm:w-[1.5rem] ${
+						currentPage === 1
+							? "brightness-50"
+							: "brightness-100 cursor-pointer"
 					}`}
 				>
 					<img src="/media/pictures/wooden_ui_arrow_L.png" alt="arrow left" />
@@ -64,7 +66,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 					<>
 						<button
 							onClick={() => setCurrentPage(1)}
-							className="mx-0.5 text-black"
+							className="mx-0.5 text-black hover:underline cursor-pointer"
 						>
 							1
 						</button>
@@ -79,8 +81,10 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 						<button
 							key={page}
 							onClick={() => handlePageChange(page)}
-							className={`mx-0.5 cursor-pointer ${
-								page === currentPage ? "text-amber-600 font-bold" : "text-black"
+							className={`mx-0.5  ${
+								page === currentPage
+									? "text-amber-600 font-bold"
+									: "text-black hover:underline cursor-pointer"
 							}`}
 						>
 							{page}
@@ -94,7 +98,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 						<span className="text-black">...</span>
 						<button
 							onClick={() => setCurrentPage(totalPages)}
-							className="mx-0.5 text-black"
+							className="mx-0.5 text-black hover:underline cursor-pointer"
 						>
 							{totalPages}
 						</button>
@@ -106,8 +110,10 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 						if (currentPage < totalPages) handlePageChange(currentPage + 1);
 					}}
 					disabled={currentPage === totalPages}
-					className={`ml-1.5 w-[1.5rem] ${
-						currentPage === totalPages ? "brightness-50" : "brightness-100 cursor-pointer"
+					className={`ml-1.5 w-10 sm:w-[1.5rem] ${
+						currentPage === totalPages
+							? "brightness-50"
+							: "brightness-100 cursor-pointer"
 					}`}
 				>
 					<img src="/media/pictures/wooden_ui_arrow_R.png" alt="arrow right" />

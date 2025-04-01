@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 
+// ***************************************************************************
+// CARD DATA
 const FactionType = {
 	0: "Neutral",
 	1: "Auger Order",
 	2: "Dungeon Master",
 	3: "Wild Horde",
 	4: "Plundering Guild",
+};
+
+const CardPackType = {
+	0: "Core",
+	1: "Tutorial",
+	2: "Crusade of Sun and Stone",
+	3: "Ashes of Ur-Enku",
 };
 
 const CardType = {
@@ -106,8 +115,6 @@ const CardKeyword = {
 };
 
 const KeywordDescription = {
-	Combatant:
-		"Card type category which includes Masters, Creatures and Tokens.",
 	Innate:
 		"Card type category which includes Spells and non-Token Creatures while excluding Tokens, Banes, and Boons.",
 	Legendary:
@@ -152,7 +159,7 @@ const KeywordDescription = {
 	Shift:
 		"The act of moving a card or creature from one location or zone to another without triggering other abilities.",
 	Restless:
-		"A Combatant with <sprite name=Restless> does not become Exhausted after attacking.",
+		"A Combatant with Restless does not become Exhausted after attacking.",
 	Mobilize:
 		"Summons 1 random creature from a player's Reserves within a mana cost range of X targeting the highest mana costs first.",
 	Plunder:
@@ -179,13 +186,13 @@ const KeywordDescription = {
 	Condition:
 		"Contracts become active when this Condition is met, and are ended and sent to the Graveyard once this Condition is no longer met.",
 	Wounded: "Performs described ability when it takes damage from any source.",
-	Mobilized: "Performs described ability after it is Mobilized.",
 	Reserved:
 		"Performs described ability after it is placed in Reserves through the Wild Horde Faction Mechanic.",
 	Sacrificed: "Performs described ability when it is Sacrificed.",
 	Discarded:
 		"Performs described ability when this card is discarded for any reason.",
 };
+// ***************************************************************************
 
 // debounce search
 const Debounce = (value, delay) => {
@@ -202,30 +209,30 @@ const Debounce = (value, delay) => {
 };
 
 // bold ability description text
-const BoldedText = ({ text }) => {
-	// Regex to match words before ":"
-	const regex = /(\b\w+(?:\s\w+)?)(:)/g;
+// const BoldedText = ({ text }) => {
+// 	// Regex to match words before ":"
+// 	const regex = /(\b\w+(?:\s\w+)?)(:)/g;
 
-	// split the text while retaining the matches
-	const parts = [];
-	let lastIndex = 0;
-	text.replace(regex, (match, p1, p2, index) => {
-		// push the text before the match
-		if (index > lastIndex) {
-			parts.push(text.slice(lastIndex, index));
-		}
-		// push the bolded word and colon
-		parts.push(<strong key={index}>{p1}</strong>, p2);
-		// update the last index
-		lastIndex = index + match.length;
-	});
+// 	// split the text while retaining the matches
+// 	const parts = [];
+// 	let lastIndex = 0;
+// 	text.replace(regex, (match, p1, p2, index) => {
+// 		// push the text before the match
+// 		if (index > lastIndex) {
+// 			parts.push(text.slice(lastIndex, index));
+// 		}
+// 		// push the bolded word and colon
+// 		parts.push(<strong key={index}>{p1}</strong>, p2);
+// 		// update the last index
+// 		lastIndex = index + match.length;
+// 	});
 
-	// push any remaining text after the last match
-	if (lastIndex < text.length) {
-		parts.push(text.slice(lastIndex));
-	}
-	return <span>{parts}</span>;
-};
+// 	// push any remaining text after the last match
+// 	if (lastIndex < text.length) {
+// 		parts.push(text.slice(lastIndex));
+// 	}
+// 	return <span>{parts}</span>;
+// };
 
 // filter search terms w/debounce
 const filterCards = (cards, debouncedSearchTerm, filter) => {
@@ -254,8 +261,30 @@ const filterCards = (cards, debouncedSearchTerm, filter) => {
 			? card.CardType === Number(filter.cardType)
 			: true;
 
+		const matchesPackType = filter.packType.length
+			? filter.packType.includes(card.CardPackType.toString())
+			: true;
+
+		const matchesSubtype = (() => {
+			if (!filter.subType) {
+				return true;
+			}
+			if (card.CardType === 0 && card.CreatureType !== undefined) {
+				return card.CreatureType === Number(filter.subType);
+			}
+			if (card.CardType === 1 && card.SpellType !== undefined) {
+				return card.SpellType === Number(filter.subType);
+			}
+			return true;
+		})();
+
 		return (
-			matchesSearch && matchesManaCost && matchesFaction && matchesCardType
+			matchesSearch &&
+			matchesManaCost &&
+			matchesFaction &&
+			matchesCardType &&
+			matchesSubtype &&
+			matchesPackType
 		);
 	});
 };
@@ -265,9 +294,8 @@ const sortCards = (cards) => {
 	const validCards = cards.AllCardDatas.filter((card) => card.Id);
 
 	const factionOrder = [2, 3, 4, 1, 0];
-	
+
 	const sortedCards = [...validCards].sort((a, b) => {
-		
 		// sort by faction order
 		const factionAIndex = factionOrder.indexOf(a.FactionType);
 		const factionBIndex = factionOrder.indexOf(b.FactionType);
@@ -282,30 +310,56 @@ const sortCards = (cards) => {
 	return sortedCards;
 };
 
-const parseDescription = (description, keywordList) => {
-	const keywords = Object.values(keywordList);
+// **description parsing**
+const parseDescription = (description) => {
+	// List of possible keywords
+	const keywords = Object.values(CardKeyword);
 
-	// Function to split camelCase into individual words
+	// Split CamelCase into individual words
 	const splitCamelCase = (str) => {
 		return str.replace(/([a-z])([A-Z])/g, "$1 $2").split(" ");
 	};
 
-	// Function to check if the keyword is multi-word (CamelCased)
+	// Check if keyword is multi-word (CamelCased)
 	const isMultiWord = (keyword) => /[A-Z].*[A-Z]/.test(keyword);
 
-	// Process only multi-word (CamelCased) keywords
+	// Separate multi-word (CamelCased) keywords for processing
 	const multiWordKeywords = keywords.filter(isMultiWord).map((keyword) => ({
 		original: keyword,
 		words: splitCamelCase(keyword),
 	}));
 
-	// Extract description words and clean punctuation
+	// Split Description into an array of separate words
 	const descriptionWords = description.match(/\b[\w]+(?:[:.])?\b/g) || [];
-	const cleanedDescriptionWords = descriptionWords.map(
-		(word) => word.replace(/[.:]$/, "") // Clean trailing punctuation
+
+	// Clean trailing punctuation from words
+	const cleanedDescriptionWords = descriptionWords.map((word) =>
+		word.replace(/[.:]$/, "")
 	);
 
-	// Function to check if a keyword's words exist sequentially in the description
+	// Manual override for specific keywords
+	const manualOverrides = {
+		Mobilized: "Mobilize",
+		Mark: "Marked",
+	};
+
+	// Apply manual overrides to cleanedDescriptionWords
+	const adjustedDescriptionWords = cleanedDescriptionWords.map((word) => {
+		// Apply manual override to matching words
+		if (manualOverrides[word]) {
+			return manualOverrides[word];
+		}
+		// If no override, return original word
+		return word;
+	});
+
+	// Debug: description words after override
+	// console.log(
+	// 	"Adjusted Description after Override:",
+	// 	adjustedDescriptionWords
+	// );
+
+	// Check if a keyword's words exist sequentially in the description
 	const containsKeyword = (descriptionWords, keywordWords) => {
 		for (let i = 0; i <= descriptionWords.length - keywordWords.length; i++) {
 			let match = true;
@@ -320,32 +374,98 @@ const parseDescription = (description, keywordList) => {
 		return false;
 	};
 
-	// Check for matches:
+	// Check for multi-word matches
 	const matchingMultiWordKeywords = multiWordKeywords.filter(({ words }) =>
-		containsKeyword(cleanedDescriptionWords, words)
+		containsKeyword(adjustedDescriptionWords, words)
 	);
 
-	// Check for single-word keywords in the description
+	// Check for single-word matches in adjusted description words
 	const matchingSingleWordKeywords = keywords.filter(
 		(keyword) =>
-			!isMultiWord(keyword) && cleanedDescriptionWords.includes(keyword)
+			!isMultiWord(keyword) && adjustedDescriptionWords.includes(keyword)
 	);
 
-	// Combine results and return them
+	// Combine results
 	const matchingKeywords = [
 		...matchingMultiWordKeywords.map(({ original }) => original),
 		...matchingSingleWordKeywords,
 	];
 
+	// Debug: final list of matching keywords
+	// console.log("Final Matching Keywords:", matchingKeywords);
+
 	return matchingKeywords;
 };
 
-// *******ENCODER / DECODER*******
+// const parseDescription = (description) => {
+// 	const keywords = Object.values(CardKeyword);
 
+// 	// Split CamelCase into individual words
+// 	const splitCamelCase = (str) => {
+// 		return str.replace(/([a-z])([A-Z])/g, "$1 $2").split(" ");
+// 	};
+
+// 	// Check if keyword is multi-word (CamelCased)
+// 	const isMultiWord = (keyword) => /[A-Z].*[A-Z]/.test(keyword);
+
+// 	// Separate multi-word (CamelCased) keywords
+// 	const multiWordKeywords = keywords.filter(isMultiWord).map((keyword) => ({
+// 		original: keyword,
+// 		words: splitCamelCase(keyword),
+// 	}));
+
+// 	// Split Description into an array of separate words
+// 	const descriptionWords = description.match(/\b[\w]+(?:[:.])?\b/g) || [];
+
+// 	// Clean trailing punctuation from words
+// 	const cleanedDescriptionWords = descriptionWords.map((word) =>
+// 		word.replace(/[.:]$/, "")
+// 	);
+
+// 	console.log(cleanedDescriptionWords); // Debugging
+
+// 	// Check if a keyword's words exist sequentially in the description
+// 	const containsKeyword = (descriptionWords, keywordWords) => {
+// 		for (let i = 0; i <= descriptionWords.length - keywordWords.length; i++) {
+// 			let match = true;
+// 			for (let j = 0; j < keywordWords.length; j++) {
+// 				if (descriptionWords[i + j] !== keywordWords[j]) {
+// 					match = false;
+// 					break;
+// 				}
+// 			}
+// 			if (match) return true;
+// 		}
+// 		return false;
+// 	};
+
+// 	// Check for multi-word matches
+// 	const matchingMultiWordKeywords = multiWordKeywords.filter(({ words }) =>
+// 		containsKeyword(cleanedDescriptionWords, words)
+// 	);
+
+// 	console.log("multi word:", matchingMultiWordKeywords); // Debugging
+
+// 	// Check for single-word matches
+// 	const matchingSingleWordKeywords = keywords.filter(
+// 		(keyword) =>
+// 			!isMultiWord(keyword) && cleanedDescriptionWords.includes(keyword)
+// 	);
+
+// 	// Combine results and return them
+// 	const matchingKeywords = [
+// 		...matchingMultiWordKeywords.map(({ original }) => original),
+// 		...matchingSingleWordKeywords,
+// 	];
+
+// 	return matchingKeywords;
+// };
+
+// *******ENCODER / DECODER*******
 
 // encoder base64
 // const encode = (data) => {
-	
+
 // 	// group ID's by occurrences and convert 1,2,3 -> a,b,c
 // 	const groups = { a: [], b: [], c: [] };
 
@@ -373,11 +493,8 @@ const parseDescription = (description, keywordList) => {
 // 	return btoa(finalString);
 // };
 
-
-
 export {
 	Debounce,
-	BoldedText,
 	filterCards,
 	sortCards,
 	parseDescription,
@@ -388,4 +505,5 @@ export {
 	AbilityKeyword,
 	CardKeyword,
 	KeywordDescription,
+	CardPackType,
 };

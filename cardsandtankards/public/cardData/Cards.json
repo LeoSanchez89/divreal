@@ -254,6 +254,69 @@
       "CanBePurchasedWithCurrency": false,
       "CurrencyCost": 1000000,
       "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_GoldRank_Season1",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_PlatinumRank_Season1",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_DiamondRank_Season1",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_MasterRank_Season1",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_Season2",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_GoldRank_Season2",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_PlatinumRank_Season2",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_DiamondRank_Season2",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
+    },
+    {
+      "Hidden": true,
+      "CardBackName": "CardBack_MasterRank_Season2",
+      "CanBePurchasedWithCurrency": false,
+      "CurrencyCost": 1000000,
+      "PremiumCurrencyCost": 1000000
     }
   ],
   "AllCardDatas": [
@@ -549,7 +612,7 @@
       "FactionType": 1,
       "Rarity": 1,
       "Name": "Copyright Infringement",
-      "Description": "Summon a copy of any summoned Innate non-Legendary creature.\nDiscarded: Both players shuffle their Decks.",
+      "Description": "Summon a copy of a friendly non-Legendary creature that costs the same or less than this spell.\nDiscarded: Shuffle all Decks.",
       "Quote": "Sometimes, the most potent form of luromancy is when it defies the law itself",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -558,7 +621,7 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 7,
+      "ManaCost": 4,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
@@ -611,7 +674,7 @@
       "CreatureType": 2,
       "CreatureExhaustedTurns": 1,
       "CreatureAttack": 0,
-      "CreatureDefense": 6,
+      "CreatureDefense": 5,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
@@ -912,7 +975,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Improvised Laws",
-      "Description": "Give all creatures -3/-3. Repeat for each of your contracts in play.\nDiscarded: Reduce mana cost by 1.",
+      "Description": "Give all creatures -2/-2 until your next turn. Repeat for each of your contracts in play.\nDiscarded: Reduce mana cost by 1.",
       "Quote": "Always fear the contract whose ink is still fresh on the paper",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -934,13 +997,32 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
       "SecondarySpellDamage": 0,
-      "DynamicAbilities": []
+      "DynamicAbilities": [
+        {
+          "Key": "",
+          "KeywordTooltips": [],
+          "Descriptions": [
+            "Keyword/HasMinus2Minus2NextTurn"
+          ],
+          "AllowWhenSuppressed": true,
+          "PreventCopying": false
+        },
+        {
+          "Key": "opponent",
+          "KeywordTooltips": [],
+          "Descriptions": [
+            "Keyword/HasMinus2Minus2OppNextTurn"
+          ],
+          "AllowWhenSuppressed": true,
+          "PreventCopying": false
+        }
+      ]
     },
     {
       "Id": 124,
@@ -1389,7 +1471,12 @@
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
-      "Keywords": [],
+      "Keywords": [
+        {
+          "Keyword": 13,
+          "Show": false
+        }
+      ],
       "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
@@ -1398,8 +1485,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 1,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -1413,7 +1500,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Power of Garsang",
-      "Description": "Condition: You're Outnumbered.\nPrepare: Give friendly creatures +0/+2.",
+      "Description": "Condition: You don't Outnumber your opponent.\nAftermath: Give friendly creatures +0/+1.",
       "Quote": "Ancient Luromancers bestowed Garsang’s protective magic on their champions, granting invulnerability",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -1430,6 +1517,10 @@
         {
           "Keyword": 22,
           "Show": true
+        },
+        {
+          "Keyword": 14,
+          "Show": true
         }
       ],
       "CreatesTokens": [],
@@ -1440,8 +1531,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 1,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -1888,7 +1979,7 @@
       "FactionType": 1,
       "Rarity": 1,
       "Name": "Violent Repossession",
-      "Description": "Banish an enemy creature.\nDiscarded: Banish the top creature from the enemy Graveyard.",
+      "Description": "Banish an enemy creature. If it cost less mana than this, draw a card.\nDiscarded: Banish the top creature from the enemy Graveyard.",
       "Quote": "The Order always collects their debts",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -1897,7 +1988,7 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 7,
+      "ManaCost": 6,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
@@ -2144,7 +2235,7 @@
       "CreatureType": 4,
       "CreatureExhaustedTurns": 1,
       "CreatureAttack": 2,
-      "CreatureDefense": 3,
+      "CreatureDefense": 2,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
@@ -2280,7 +2371,12 @@
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
-      "Keywords": [],
+      "Keywords": [
+        {
+          "Keyword": 32,
+          "Show": true
+        }
+      ],
       "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
@@ -2289,8 +2385,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -2326,8 +2422,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": true,
       "SpellDamage": 3,
@@ -2442,8 +2538,8 @@
       "AbilityKeywords": [
         5
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -2661,7 +2757,7 @@
       "FactionType": 2,
       "Rarity": 3,
       "Name": "Gunhaunt",
-      "Description": "Activate: Banish a random creature from your Graveyard then summon a Desperado with attack equal to its mana cost.",
+      "Description": "Activate: Banish a random creature from your Graveyard then summon a Desperado with attack equal to half its mana cost.",
       "Quote": "Even the mightiest devil falters when struck in the back",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -3195,8 +3291,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -3789,7 +3885,7 @@
       "FactionType": 0,
       "Rarity": 2,
       "Name": "Avatar of Peace",
-      "Description": "Entrance: Pacify 2 creatures.",
+      "Description": "Entrance: Pacify another creature.",
       "Quote": "Though nature appears chaotic, tranquility and order are its true, natural state",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -3816,7 +3912,7 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
-        12,
+        2,
         7
       ],
       "ImmunityToKeywords": [],
@@ -4310,7 +4406,7 @@
       "CreatesTokens": [],
       "CreatureType": 8,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 1,
+      "CreatureAttack": 3,
       "CreatureDefense": 3,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
@@ -5281,17 +5377,17 @@
       "FactionType": 4,
       "Rarity": 1,
       "Name": "Fireball",
-      "Description": "Deal X damage to an enemy creature and half to adjacent creatures where X is mana spent to cast this.\nEnhance: Costs 2 more Mana for 2 Coins.",
+      "Description": "Deal X damage to an enemy creature and a third to adjacent creatures where X is mana spent to cast this.\nEnhance: Half instead for 1 Coin.",
       "Quote": "Fire is a destructive force, often spreading beyond control",
       "CanBeEnhanced": true,
-      "EnhanceCoinCost": 2,
+      "EnhanceCoinCost": 1,
       "CanBeDevoted": false,
       "HasDynamicValues": false,
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
       "ManaCost": 6,
-      "EnhancedManaCostDelta": 2,
+      "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
       "Keywords": [],
@@ -5819,6 +5915,10 @@
         {
           "Keyword": 30,
           "Show": true
+        },
+        {
+          "Keyword": 24,
+          "Show": true
         }
       ],
       "CreatesTokens": [],
@@ -5829,8 +5929,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -6110,17 +6210,17 @@
       "FactionType": 4,
       "Rarity": 1,
       "Name": "Poison Bomb",
-      "Description": "Poison all summoned creatures.\nEnhance: Costs 2 less Mana for 2 Coins.",
+      "Description": "Poisoned creatures lose 2 health and all other summoned creatures become Poisoned.\nEnhance: Enemy creatures instead for 3 Coins.",
       "Quote": "A deadly concoction of nightshade nectar and wraithsroot",
       "CanBeEnhanced": true,
-      "EnhanceCoinCost": 2,
+      "EnhanceCoinCost": 3,
       "CanBeDevoted": false,
       "HasDynamicValues": false,
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
       "ManaCost": 6,
-      "EnhancedManaCostDelta": -2,
+      "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
       "Keywords": [
@@ -6887,7 +6987,7 @@
       "FactionType": 3,
       "Rarity": 1,
       "Name": "Energized Elemental",
-      "Description": "Mobilized: Gain +1/+0.\nLast Word: Deal 2 direct damage.",
+      "Description": "Mobilized: Gain +1/+0.\nLast Word: Deal 1 direct damage.",
       "Quote": "Elementals were destructive by nature, but Drakth's influence made them even more volatile",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -7028,7 +7128,7 @@
       "FactionType": 3,
       "Rarity": 0,
       "Name": "Gelatinize",
-      "Description": "Mobilize 5 or less.\nThe mobilized creature gains +2/+2 and becomes an Ooze.",
+      "Description": "Mobilize 5 or less.\nThe mobilized creature gains +2/+2 and also becomes an Ooze.",
       "Quote": "The Mother Ooze welcomes all",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -7323,20 +7423,25 @@
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": true,
       "ReservesManaGain": 1,
-      "Keywords": [],
+      "Keywords": [
+        {
+          "Keyword": 8,
+          "Show": true
+        }
+      ],
       "CreatesTokens": [],
       "CreatureType": 3,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 4,
-      "CreatureDefense": 6,
+      "CreatureAttack": 3,
+      "CreatureDefense": 5,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
         8,
         5
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -7436,7 +7541,7 @@
       "FactionType": 3,
       "Rarity": 1,
       "Name": "Killer Bee of Urwuste",
-      "Description": "Mobilized: Gain +0/+1.\nAftermath: Take 1 damage.",
+      "Description": "Mobilized: Gain +1/+0.\nAftermath: Sacrifice this creature.",
       "Quote": "Generally peaceful, but fiercly loyal creatures, they will defend the colony with their life",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -8124,7 +8229,7 @@
       "FactionType": 3,
       "Rarity": 0,
       "Name": "Taunting",
-      "Description": "Give a friendly creature Taunt and \"When this creature is blocked or targeted by an opponent as a result of Taunt, draw a card.\"",
+      "Description": "Give a friendly creature Taunt and \"When blocked or targeted as a result of Taunt, draw a card.\"",
       "Quote": "Don't be a part of the problem, be the whole problem",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -8734,7 +8839,7 @@
       "FactionType": 1,
       "Rarity": 1,
       "Name": "Covert Contractor",
-      "Description": "After drawing a card through a card ability, this has +2/+0 until your next turn.\nDevotion: +0/+2 instead.",
+      "Description": "This card deals combat damage equal to its health.\nDevotion: Has \"Enrage (Innate): Gain +0/+2.\"",
       "Quote": "One of the Order’s first moves to infiltrate the crusading army was through hired contractors",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -8756,35 +8861,15 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
-        8,
-        1
+        8
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
       "SecondarySpellDamage": 0,
-      "DynamicAbilities": [
-        {
-          "Key": "",
-          "KeywordTooltips": [],
-          "Descriptions": [
-            "Keyword/HasPlus2Plus0NextTurn"
-          ],
-          "AllowWhenSuppressed": false,
-          "PreventCopying": false
-        },
-        {
-          "Key": "Devoted",
-          "KeywordTooltips": [],
-          "Descriptions": [
-            "Keyword/HasPlus0Plus2NextTurn"
-          ],
-          "AllowWhenSuppressed": false,
-          "PreventCopying": false
-        }
-      ]
+      "DynamicAbilities": []
     },
     {
       "Id": 2108,
@@ -8890,6 +8975,10 @@
       "Keywords": [
         {
           "Keyword": 15,
+          "Show": true
+        },
+        {
+          "Keyword": 42,
           "Show": true
         }
       ],
@@ -9145,7 +9234,7 @@
       "FactionType": 2,
       "Rarity": 3,
       "Name": "Aaisha, Embalmed Savant",
-      "Description": "Activate: Banish a random spell from your Graveyard then summon a Cursed Cadaver with health equal to 1 + its mana cost.",
+      "Description": "Activate: Banish 2 random spells from your Graveyard then summon a Cursed Cadaver with health equal to half their total mana cost + 1.",
       "Quote": "Aaisha's foes died for their cause, but the strongest would rise for hers",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -9226,7 +9315,7 @@
       "FactionType": 2,
       "Rarity": 1,
       "Name": "Corpse Retrieval",
-      "Description": "Choose a creature from your Graveyard then shuffle it into your Deck.",
+      "Description": "Fetch 1 (Undead)\nOtherwise, give an Innate non-Doomed enemy creature \"Last Word: Shift this to your opponent's Graveyard.\"",
       "Quote": "The grave holds no finality",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -9235,11 +9324,28 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 1,
+      "ManaCost": 2,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
-      "Keywords": [],
+      "Keywords": [
+        {
+          "Keyword": 18,
+          "Show": true
+        },
+        {
+          "Keyword": 4,
+          "Show": true
+        },
+        {
+          "Keyword": 30,
+          "Show": true
+        },
+        {
+          "Keyword": 32,
+          "Show": true
+        }
+      ],
       "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
@@ -9248,13 +9354,28 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
       "SecondarySpellDamage": 0,
-      "DynamicAbilities": []
+      "DynamicAbilities": [
+        {
+          "Key": "",
+          "KeywordTooltips": [
+            {
+              "Keyword": 30,
+              "Show": true
+            }
+          ],
+          "Descriptions": [
+            "Keyword/CorpseRetrievalDescription"
+          ],
+          "AllowWhenSuppressed": false,
+          "PreventCopying": false
+        }
+      ]
     },
     {
       "Id": 2249,
@@ -9506,7 +9627,7 @@
       "FactionType": 2,
       "Rarity": 0,
       "Name": "Worshiper of Verenthil",
-      "Description": "Last Word: If your deck contains no Neutral cards, kill the enemy creature with the highest health.",
+      "Description": "Last Word: If your deck contains no Neutral cards, kill the enemy creature with the highest attack.",
       "Quote": "Bound by power, their devotion is unwavering, for their god grants strength beyond measure",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -9617,7 +9738,7 @@
       "FactionType": 0,
       "Rarity": 3,
       "Name": "Councilman Lazar",
-      "Description": "Entrance / Last Word: Give your Crusaders not in play +1/+1.",
+      "Description": "Entrance: Give your Crusaders not in play +1/+0.\nLast Word: Give your Crusaders not in play +0/+1.",
       "Quote": "Soluron’s most zealous worshipper, he tolerates no blasphemy against the Radiant God",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -9657,7 +9778,7 @@
       "FactionType": 0,
       "Rarity": 2,
       "Name": "Orallus Mirrorknight",
-      "Description": "Aftermath: Summon a Token copy of this card without this ability.",
+      "Description": "Aftermath: Summon a Token copy of this creature without this ability.",
       "Quote": "You never know if you are fighting the original, or just a reflection",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -9849,7 +9970,7 @@
       "FactionType": 0,
       "Rarity": 0,
       "Name": "Sunburnt Monk",
-      "Description": "While attacking, has +2/+0.",
+      "Description": "Attacking: Has +2/+0.",
       "Quote": "Blinded by unwavering devotion to the sun and their skin as weathered as the desert sands",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -10069,7 +10190,12 @@
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": true,
       "ReservesManaGain": 1,
-      "Keywords": [],
+      "Keywords": [
+        {
+          "Keyword": 32,
+          "Show": true
+        }
+      ],
       "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
@@ -10343,10 +10469,10 @@
       "FactionType": 4,
       "Rarity": 0,
       "Name": "Mercenary Mayhem",
-      "Description": "Deal {1:spellDamage} damage to an enemy creature. Repeat once if you control a Mercenary.\nEnhance: {2:secondarySpellDamage} damage instead for 1 Coins.",
+      "Description": "Deal {1:spellDamage} damage to an enemy creature. Repeat once if you control a Mercenary.\nEnhance: {2:secondarySpellDamage} damage instead for 2 Coins.",
       "Quote": "The Mercenaries of Sulita killed more Crusaders than they could count...",
       "CanBeEnhanced": true,
-      "EnhanceCoinCost": 1,
+      "EnhanceCoinCost": 2,
       "CanBeDevoted": false,
       "HasDynamicValues": false,
       "DynamicValue1": 0,
@@ -10829,7 +10955,7 @@
       "FactionType": 3,
       "Rarity": 1,
       "Name": "Vengeful Empath",
-      "Description": "Enrage: Gain +1/+0.\nDevotion: When enraged, Mobilize 1 or less.",
+      "Description": "Enrage (Innate): Gain +1/+0.\nDevotion: When enraged, Mobilize 1 or less.",
       "Quote": "Cut down one Goblin and another emerges",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -10886,10 +11012,6 @@
       "ReservesManaGain": 1,
       "Keywords": [
         {
-          "Keyword": 8,
-          "Show": true
-        },
-        {
           "Keyword": 30,
           "Show": true
         }
@@ -10902,8 +11024,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -10998,7 +11120,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Archival Collapse",
-      "Description": "Banish the left and rightmost enemy creatures.\nDiscarded: Banish the top creature in your opponent's Graveyard.",
+      "Description": "Kill the left and rightmost Innate enemy creatures.\nDiscarded: Banish the top creature in your opponent's Graveyard.",
       "Quote": "If you don't watch your footing, the crumbling structure could take you with it",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11007,13 +11129,17 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 8,
+      "ManaCost": 6,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
       "Keywords": [
         {
           "Keyword": 23,
+          "Show": true
+        },
+        {
+          "Keyword": 24,
           "Show": true
         }
       ],
@@ -11025,8 +11151,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -11038,9 +11164,9 @@
       "Collectible": true,
       "CardPackType": 3,
       "FactionType": 1,
-      "Rarity": 0,
+      "Rarity": 1,
       "Name": "Blood Moon's Blade",
-      "Description": "Has +0/+3 when adjacent to a Pacifist creature.",
+      "Description": "When blocked or targeted as a result of Taunt, deal 1 damage to all Marked enemy creatures.\nDiscarded: Mark a random enemy creature.",
       "Quote": "Devout Lunarists sometimes serveTaluum when their goals momentarily intertwine",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11055,22 +11181,23 @@
       "ReservesManaGain": 1,
       "Keywords": [
         {
-          "Keyword": 16,
+          "Keyword": 33,
           "Show": true
         }
       ],
       "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 6,
-      "CreatureDefense": 3,
+      "CreatureAttack": 2,
+      "CreatureDefense": 8,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
-        6
+        6,
+        7
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -11130,7 +11257,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Decoy",
-      "Description": "When this creature is blocked or targeted by an opponent as a result of Taunt, gain a Mana Fragment.",
+      "Description": "When targeted by a spell or ability as a result of Taunt, gain a Mana Fragment.",
       "Quote": "Everyone looks, but no one really knows what they’re looking at",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11145,7 +11272,7 @@
       "ReservesManaGain": 1,
       "Keywords": null,
       "CreatesTokens": null,
-      "CreatureType": 0,
+      "CreatureType": 2,
       "CreatureExhaustedTurns": 1,
       "CreatureAttack": 0,
       "CreatureDefense": 1,
@@ -11169,7 +11296,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Decoy Disarray",
-      "Description": "All players summon 3 Decoys.\nDiscarded: Shift an enemy Contract back to their hand.",
+      "Description": "Summon a Decoy on the left and right side of your Creature Zone.\nDiscarded: Shift a random enemy Ritual or Enchantment to their hand.",
       "Quote": "For when you have a plan and all you need is a distraction",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11217,7 +11344,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Illusion Weaver",
-      "Description": "Entrance: Summon a Decoy.\nDiscarded: Give a random friendly creature Taunt.",
+      "Description": "Deathblow: Summon a Decoy.\nDiscarded: Give a random friendly creature Taunt.",
       "Quote": "Masters of deception, creating false fronts, hiding true intentions behind a veil of confusion",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11244,7 +11371,9 @@
           "Show": true
         }
       ],
-      "CreatesTokens": [],
+      "CreatesTokens": [
+        3154
+      ],
       "CreatureType": 2,
       "CreatureExhaustedTurns": 1,
       "CreatureAttack": 2,
@@ -11252,10 +11381,11 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
+        2,
         4
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -11267,9 +11397,9 @@
       "Collectible": true,
       "CardPackType": 3,
       "FactionType": 1,
-      "Rarity": 0,
+      "Rarity": 2,
       "Name": "Lunareal's Light",
-      "Description": "When a friendly creature with 2 or less attack is summoned, it gains +1/+0. If it has Pacifist, +1/+1 instead.",
+      "Description": "When a friendly creature with 2 or less attack is summoned, it gains +1/+0. If it has Pacifist, +0/+2 instead.",
       "Quote": "The power of faith is real, even if your deity is not",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11333,7 +11463,6 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
-        12,
         4
       ],
       "ImmunityToKeywords": null,
@@ -11351,7 +11480,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Sleuthy Surveiller",
-      "Description": "Prepare: Mark a creature.\nDiscarded: Mark a random friendly creature.",
+      "Description": "Prepare: Mark a creature.\nDiscarded: Mark a random enemy creature.",
       "Quote": "Your orders are to watch and report, that is it",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11381,8 +11510,8 @@
       "CreatesTokens": [],
       "CreatureType": 2,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 2,
-      "CreatureDefense": 2,
+      "CreatureAttack": 1,
+      "CreatureDefense": 3,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
@@ -11403,7 +11532,7 @@
       "FactionType": 1,
       "Rarity": 1,
       "Name": "Sneaky Saboteur",
-      "Description": "Entrances do not trigger.",
+      "Description": "Entrances do not trigger.\nDiscarded: Gain Loophole.",
       "Quote": "The Guild never anticipated their own men would become their greatest weakness",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11420,20 +11549,24 @@
         {
           "Keyword": 1,
           "Show": true
+        },
+        {
+          "Keyword": 15,
+          "Show": true
         }
       ],
       "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 0,
+      "CreatureAttack": 1,
       "CreatureDefense": 5,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
         4
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -11445,9 +11578,9 @@
       "Collectible": true,
       "CardPackType": 3,
       "FactionType": 1,
-      "Rarity": 2,
+      "Rarity": 0,
       "Name": "Spell Limit Legislator",
-      "Description": "After your opponent casts a spell with an altered mana cost, Banish all other copies in their hand and Graveyard.",
+      "Description": "Prepare: If your opponent played a spell last turn, draw a card.\nDiscarded: A random spell in your hand costs 1 less Mana.",
       "Quote": "When your opponent is the better mage, defeat them with a better lawyer",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11484,7 +11617,7 @@
       "Collectible": true,
       "CardPackType": 3,
       "FactionType": 1,
-      "Rarity": 1,
+      "Rarity": 0,
       "Name": "Unfulfilled Obligation",
       "Description": "Condition: A friendly creature that never attacked dies and goes to the Graveyard.\nResummon that creature and give it Doomed.",
       "Quote": "You're not allowed to die yet, you still have a contract to fulfill",
@@ -11503,10 +11636,6 @@
         {
           "Keyword": 32,
           "Show": true
-        },
-        {
-          "Keyword": 24,
-          "Show": true
         }
       ],
       "CreatesTokens": [],
@@ -11517,8 +11646,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 1,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -11532,7 +11661,7 @@
       "FactionType": 1,
       "Rarity": 0,
       "Name": "Veil of Shadows",
-      "Description": "Mark 2 creatures.\nSuppress all Marked and Pacifist creatures.\nDiscarded: Mark a random enemy creature.",
+      "Description": "Mark 2 creatures.\nSuppress all Marked enemy creatures.\nRemove Pacifist from all summoned creatures.",
       "Quote": "Stay hidden and attack from the shadows",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -11541,13 +11670,13 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 4,
+      "ManaCost": 5,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
       "Keywords": [
         {
-          "Keyword": 23,
+          "Keyword": 16,
           "Show": true
         },
         {
@@ -11567,8 +11696,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -11982,7 +12111,20 @@
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": true,
       "ReservesManaGain": 1,
-      "Keywords": [],
+      "Keywords": [
+        {
+          "Keyword": 24,
+          "Show": true
+        },
+        {
+          "Keyword": 33,
+          "Show": true
+        },
+        {
+          "Keyword": 18,
+          "Show": true
+        }
+      ],
       "CreatesTokens": [
         3294
       ],
@@ -11993,8 +12135,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -12326,7 +12468,7 @@
       "FactionType": 4,
       "Rarity": 0,
       "Name": "Dishonor Among Thieves",
-      "Description": "Mark 2 creatures.\nGain a coin for each friendly Marked creature.\nEnhance: Mark 3 creatures instead for 1 Coin.",
+      "Description": "Mark 2 creatures.\nGain a coin for each Marked friendly creature.\nEnhance: Mark 3 creatures instead for 1 Coin.",
       "Quote": "If your worth as a Guildmate is measured by your coin purse rather than your loyalty, beware",
       "CanBeEnhanced": true,
       "EnhanceCoinCost": 1,
@@ -12368,7 +12510,7 @@
       "FactionType": 4,
       "Rarity": 2,
       "Name": "Dying Breath",
-      "Description": "Summon 3 Last Word creatures from your Graveyard with 1 attack and health.\nEnhance: 5 Last Word creatures instead for 3 Coins.",
+      "Description": "Summon 4 Last Word creatures from your Graveyard with 1 attack and health.\nEnhance: 2 attack and health instead for 3 Coins.",
       "Quote": "There is often nothing more meaningful than your final words, make them count",
       "CanBeEnhanced": true,
       "EnhanceCoinCost": 3,
@@ -12377,7 +12519,7 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 10,
+      "ManaCost": 8,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
@@ -12423,8 +12565,13 @@
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": true,
       "ReservesManaGain": 1,
-      "Keywords": null,
-      "CreatesTokens": null,
+      "Keywords": [
+        {
+          "Keyword": 4,
+          "Show": true
+        }
+      ],
+      "CreatesTokens": [],
       "CreatureType": 0,
       "CreatureExhaustedTurns": 1,
       "CreatureAttack": 0,
@@ -12432,8 +12579,8 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -12447,10 +12594,10 @@
       "FactionType": 4,
       "Rarity": 1,
       "Name": "Exit Strategist",
-      "Description": "Entrance: Trigger a random friendly Last Word ability.\nEnhance: Remove random for 1 Coin.",
+      "Description": "Entrance: Trigger a random friendly Last Word ability.\nEnhance: Remove random for 2 Coins.",
       "Quote": "At times, a quick retreat is the wisest move to make",
       "CanBeEnhanced": true,
-      "EnhanceCoinCost": 1,
+      "EnhanceCoinCost": 2,
       "CanBeDevoted": false,
       "HasDynamicValues": false,
       "DynamicValue1": 0,
@@ -12473,9 +12620,7 @@
       "CreatureDefense": 2,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
-      "AbilityKeywords": [
-        8
-      ],
+      "AbilityKeywords": [],
       "ImmunityToKeywords": null,
       "UnaffectedBy": null,
       "SpellType": 0,
@@ -12575,10 +12720,10 @@
       "FactionType": 4,
       "Rarity": 0,
       "Name": "Kleptomaniac",
-      "Description": "Last Word: Plunder (Non-Legendary).\nEnhance: Gain Amped for 1 Coin.",
+      "Description": "After Enhancing, Mark a creature.\nLast Word: Add a copy of a Random Innate Marked non-Legendary creature except Kleptomaniac to your hand.",
       "Quote": "After Kradam’s arrival, even the most righteous found themselves coveting their neighbors",
-      "CanBeEnhanced": true,
-      "EnhanceCoinCost": 1,
+      "CanBeEnhanced": false,
+      "EnhanceCoinCost": 0,
       "CanBeDevoted": false,
       "HasDynamicValues": false,
       "DynamicValue1": 0,
@@ -12590,24 +12735,28 @@
       "ReservesManaGain": 1,
       "Keywords": [
         {
-          "Keyword": 0,
+          "Keyword": 33,
           "Show": true
         },
         {
-          "Keyword": 19,
+          "Keyword": 24,
+          "Show": true
+        },
+        {
+          "Keyword": 27,
           "Show": true
         }
       ],
       "CreatesTokens": [],
       "CreatureType": 7,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 3,
-      "CreatureDefense": 2,
+      "CreatureAttack": 1,
+      "CreatureDefense": 5,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -12660,10 +12809,10 @@
       "FactionType": 4,
       "Rarity": 0,
       "Name": "Munitionist",
-      "Description": "Entrance: Mark another friendly creature and give all friendly Marked creatures Quickstrike until end of turn.",
+      "Description": "Entrance: Mark another friendly creature and give all Marked friendly creatures Ranged.\nEnhance: Quickstrike instead for 3 Coins.",
       "Quote": "The beasts of Ur-Enku are fast, but our bullets are faster",
-      "CanBeEnhanced": false,
-      "EnhanceCoinCost": 0,
+      "CanBeEnhanced": true,
+      "EnhanceCoinCost": 3,
       "CanBeDevoted": false,
       "HasDynamicValues": false,
       "DynamicValue1": 0,
@@ -12690,30 +12839,21 @@
       "CreatesTokens": [],
       "CreatureType": 7,
       "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 7,
-      "CreatureDefense": 3,
+      "CreatureAttack": 6,
+      "CreatureDefense": 4,
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [
+        15,
         5
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
       "SecondarySpellDamage": 0,
-      "DynamicAbilities": [
-        {
-          "Key": "",
-          "KeywordTooltips": [],
-          "Descriptions": [
-            "Keyword/MunitionistDescription"
-          ],
-          "AllowWhenSuppressed": false,
-          "PreventCopying": false
-        }
-      ]
+      "DynamicAbilities": []
     },
     {
       "Id": 3432,
@@ -12825,6 +12965,10 @@
       "Keywords": [
         {
           "Keyword": 20,
+          "Show": true
+        },
+        {
+          "Keyword": 8,
           "Show": true
         }
       ],
@@ -12990,6 +13134,10 @@
         {
           "Keyword": 30,
           "Show": true
+        },
+        {
+          "Keyword": 24,
+          "Show": true
         }
       ],
       "CreatesTokens": [],
@@ -13002,8 +13150,8 @@
       "AbilityKeywords": [
         2
       ],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
       "SpellType": 0,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
@@ -13057,10 +13205,62 @@
       "Collectible": true,
       "CardPackType": 3,
       "FactionType": 3,
-      "Rarity": 1,
+      "Rarity": 0,
       "Name": "Kularan War Paint",
-      "Description": "When a friendly creature becomes Marked, Fetch 1 (Creature). If the Fetched creature was a Nomad, it costs 1 less Mana.",
+      "Description": "Mark 2 Creatures.\nMarked friendly creatures gain +1/+0. Marked enemy creatures gain -1/-0 until next turn.",
       "Quote": "The tribe’s markings, symbols of their sacred pact with one another",
+      "CanBeEnhanced": false,
+      "EnhanceCoinCost": 0,
+      "CanBeDevoted": false,
+      "HasDynamicValues": false,
+      "DynamicValue1": 0,
+      "DynamicValue2": 0,
+      "CardType": 1,
+      "ManaCost": 2,
+      "EnhancedManaCostDelta": 0,
+      "CanGoToReserves": false,
+      "ReservesManaGain": 1,
+      "Keywords": [
+        {
+          "Keyword": 33,
+          "Show": true
+        }
+      ],
+      "CreatesTokens": [],
+      "CreatureType": 0,
+      "CreatureExhaustedTurns": 1,
+      "CreatureAttack": 1,
+      "CreatureDefense": 1,
+      "CreatureEnhancedAttackDelta": 0,
+      "CreatureEnhancedDefenseDelta": 0,
+      "AbilityKeywords": [],
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
+      "SpellType": 0,
+      "SpellDoesDamage": false,
+      "SpellDamage": 0,
+      "SecondarySpellDamage": 0,
+      "DynamicAbilities": [
+        {
+          "Key": "",
+          "KeywordTooltips": [],
+          "Descriptions": [
+            "Keyword/HasMinus1Minus0OppNextTurn"
+          ],
+          "AllowWhenSuppressed": true,
+          "PreventCopying": false
+        }
+      ]
+    },
+    {
+      "Id": 3308,
+      "Collectible": true,
+      "CardPackType": 3,
+      "FactionType": 3,
+      "Rarity": 2,
+      "Name": "Poisoned Darts",
+      "Description": "(Reservable)\nPrepare: If a creature which could have attacked did not attack on its owner's turn, it becomes Poisoned.",
+      "Quote": "The darkest form of nature magic, leaving its target to rot from decay",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
       "CanBeDevoted": false,
@@ -13070,62 +13270,16 @@
       "CardType": 1,
       "ManaCost": 6,
       "EnhancedManaCostDelta": 0,
-      "CanGoToReserves": false,
+      "CanGoToReserves": true,
       "ReservesManaGain": 1,
       "Keywords": [
-        {
-          "Keyword": 18,
-          "Show": true
-        },
-        {
-          "Keyword": 33,
-          "Show": true
-        }
-      ],
-      "CreatesTokens": [],
-      "CreatureType": 0,
-      "CreatureExhaustedTurns": 1,
-      "CreatureAttack": 1,
-      "CreatureDefense": 1,
-      "CreatureEnhancedAttackDelta": 0,
-      "CreatureEnhancedDefenseDelta": 0,
-      "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
-      "SpellType": 3,
-      "SpellDoesDamage": false,
-      "SpellDamage": 0,
-      "SecondarySpellDamage": 0,
-      "DynamicAbilities": []
-    },
-    {
-      "Id": 3308,
-      "Collectible": true,
-      "CardPackType": 3,
-      "FactionType": 3,
-      "Rarity": 0,
-      "Name": "Poisoned Darts",
-      "Description": "Mark 2 creatures.\nPoison all Marked creatures.",
-      "Quote": "The darkest form of nature magic, leaving its target to rot from decay",
-      "CanBeEnhanced": false,
-      "EnhanceCoinCost": 0,
-      "CanBeDevoted": false,
-      "HasDynamicValues": false,
-      "DynamicValue1": 0,
-      "DynamicValue2": 0,
-      "CardType": 1,
-      "ManaCost": 4,
-      "EnhancedManaCostDelta": 0,
-      "CanGoToReserves": false,
-      "ReservesManaGain": 1,
-      "Keywords": [
-        {
-          "Keyword": 33,
-          "Show": true
-        },
         {
           "Keyword": 37,
           "Show": true
+        },
+        {
+          "Keyword": 13,
+          "Show": true
         }
       ],
       "CreatesTokens": [],
@@ -13136,9 +13290,9 @@
       "CreatureEnhancedAttackDelta": 0,
       "CreatureEnhancedDefenseDelta": 0,
       "AbilityKeywords": [],
-      "ImmunityToKeywords": null,
-      "UnaffectedBy": null,
-      "SpellType": 0,
+      "ImmunityToKeywords": [],
+      "UnaffectedBy": [],
+      "SpellType": 3,
       "SpellDoesDamage": false,
       "SpellDamage": 0,
       "SecondarySpellDamage": 0,
@@ -13149,7 +13303,7 @@
       "Collectible": true,
       "CardPackType": 3,
       "FactionType": 3,
-      "Rarity": 2,
+      "Rarity": 1,
       "Name": "Seething Speardancer",
       "Description": "Reserved / Mobilized: Draw a card.",
       "Quote": "A spinning spear deceives, distracting from the fatal strike that soon follows",
@@ -13200,7 +13354,7 @@
       "FactionType": 3,
       "Rarity": 0,
       "Name": "Smoke Signal",
-      "Description": "After 3 turns, Mobilize 5 or less. Otherwise, summon a random 5 or less mana cost creature from your Primary Faction Zone.",
+      "Description": "After 2 turns, Mobilize 5 or less. Otherwise, summon a random 5 or less mana cost creature from your Primary Faction Zone.",
       "Quote": "A primitive form of long range communication",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -13209,7 +13363,7 @@
       "DynamicValue1": 0,
       "DynamicValue2": 0,
       "CardType": 1,
-      "ManaCost": 2,
+      "ManaCost": 3,
       "EnhancedManaCostDelta": 0,
       "CanGoToReserves": false,
       "ReservesManaGain": 1,
@@ -13246,7 +13400,7 @@
       "FactionType": 3,
       "Rarity": 0,
       "Name": "Spare None",
-      "Description": "Deal {2:spellDamage} damage to a creature. If it survives, Mark it and all other creatures with the same name.",
+      "Description": "Deal {2:spellDamage} damage to a creature. If it was Marked, {4:secondarySpellDamage} damage instead.",
       "Quote": "The Plunderers fell one by one to the might of the Kularans",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
@@ -13278,7 +13432,7 @@
       "SpellType": 0,
       "SpellDoesDamage": true,
       "SpellDamage": 2,
-      "SecondarySpellDamage": 0,
+      "SecondarySpellDamage": 4,
       "DynamicAbilities": []
     },
     {
@@ -13334,7 +13488,7 @@
       "FactionType": 3,
       "Rarity": 0,
       "Name": "Truesight Tracker",
-      "Description": "Activate: Mark a creature. If it was an enemy creature, give it -1/-0.",
+      "Description": "Activate: Mark a creature.",
       "Quote": "With a sharp eye and unwavering focus, nothing escapes the Tracker’s mark",
       "CanBeEnhanced": false,
       "EnhanceCoinCost": 0,
