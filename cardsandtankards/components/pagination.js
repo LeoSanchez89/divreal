@@ -45,7 +45,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 
 	return (
 		totalPages > 1 && (
-			<div className="max-w-screen-xl mx-auto flex justify-center items-center sm:justify-end sm:pr-10 ">
+			<div className="max-w-screen-xl mx-auto flex justify-center items-center sm:justify-end sm:pr-10 text-lg">
 				{/* left arrow  */}
 				<button
 					onClick={() => {
