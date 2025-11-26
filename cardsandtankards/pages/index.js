@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Layout from "../components/layout";
+import useUtmLinks from "../helpers/utmLinks";
 
 export default function Home() {
 	const title = "Cards & Tankards - Divergent Realities";
-	const [utm, setUtm] = useState("");
-	useEffect(() => {
-		const url = window.location.href;
-		if (url.includes("?utm_source")) {
-			setUtm(url.slice(url.indexOf("?")));
-		} else {
-			setUtm("?utm_source=website");
-		}
-	}, []);
+	const { addUtm } = useUtmLinks();
 	return (
 		<Layout title={title}>
 			<header>
@@ -38,7 +31,9 @@ export default function Home() {
 					<div className="max-w-xl flex flex-col gap-y-2 sm:flex-row sm:gap-x-4 pt-6">
 						<a
 							className="font-bold uppercase bg-black/[.6] rounded-md text-white py-5 px-4 flex items-center justify-center gap-x-2 border border-black hover:ease duration-300  hover:border-amber-500 hover:shadow-lg hover:shadow-amber-500/50"
-							href={`https://www.oculus.com/experiences/quest/3073319699437112/${utm}`}
+							href={addUtm(
+								"https://www.meta.com/experiences/3073319699437112/"
+							)}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -51,7 +46,9 @@ export default function Home() {
 						</a>
 						<a
 							className="font-bold uppercase bg-black/[.6] rounded-md text-white py-5 px-4 flex items-center justify-center gap-x-2 border border-black hover:ease duration-300 hover:border hover:border-amber-500 hover:shadow-lg hover:shadow-amber-500/50"
-							href={`https://store.steampowered.com/app/1506850/Cards__Tankards/${utm}`}
+							href={addUtm(
+								"https://store.steampowered.com/app/1506850/Cards__Tankards/"
+							)}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -61,6 +58,21 @@ export default function Home() {
 								className="w-6"
 							/>
 							Download for Steam
+						</a>
+						<a
+							className="font-bold uppercase bg-black/[.6] rounded-md text-white py-5 px-4 flex items-center justify-center gap-x-2 border border-black hover:ease duration-300 hover:border hover:border-amber-500 hover:shadow-lg hover:shadow-amber-500/50"
+							href={addUtm(
+								"https://play.google.com/store/apps/details?id=com.DivergentRealities.CardsTankards"
+							)}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								src="/media/pictures/google_play_logo.png"
+								alt="Google Play logo"
+								className="w-6"
+							/>
+							Download for Google Play
 						</a>
 					</div>
 				</div>
@@ -300,7 +312,9 @@ export default function Home() {
 						<div className="pt-8 flex flex-col gap-y-2 sm:gap-x-4 sm:justify-center sm:flex-row sm:gap-x-4">
 							<a
 								className="mx-auto sm:mx-0 font-bold uppercase bg-black/[.9] rounded-md text-white py-5 px-4 flex items-center justify-center gap-x-2 border border-black hover:ease duration-300 hover:border hover:border-amber-500 hover:shadow-lg hover:shadow-amber-700/50"
-								href={`https://www.oculus.com/experiences/quest/3073319699437112/${utm}`}
+								href={addUtm(
+									"https://www.meta.com/experiences/3073319699437112/"
+								)}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -313,7 +327,9 @@ export default function Home() {
 							</a>
 							<a
 								className="mx-auto sm:mx-0 font-bold uppercase bg-black/[.9] rounded-md text-white py-5 px-4 flex items-center justify-center gap-x-2 border border-black hover:ease duration-300 hover:border hover:border-amber-500 hover:shadow-lg hover:shadow-amber-700/50"
-								href={`https://store.steampowered.com/app/1506850/Cards__Tankards/${utm}`}
+								href={addUtm(
+									"https://store.steampowered.com/app/1506850/Cards__Tankards"
+								)}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -323,6 +339,21 @@ export default function Home() {
 									className="w-6"
 								/>
 								Download for Steam
+							</a>
+							<a
+								className="font-bold uppercase bg-black/[.9] rounded-md text-white py-5 px-4 flex items-center justify-center gap-x-2 border border-black hover:ease duration-300 hover:border hover:border-amber-500 hover:shadow-lg hover:shadow-amber-500/50"
+								href={addUtm(
+									"https://play.google.com/store/apps/details?id=com.DivergentRealities.CardsTankards"
+								)}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									src="/media/pictures/google_play_logo.png"
+									alt="Google Play logo"
+									className="w-6"
+								/>
+								Download for Google Play
 							</a>
 						</div>
 					</div>

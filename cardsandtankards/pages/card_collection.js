@@ -14,13 +14,12 @@ import {
 import cardData from "../public/cardData/Cards.json";
 import Card from "../components/card";
 import Dropdown from "../components/dropdownMenu";
-import Checkbox from "../components/checkBox";
 import Pagination from "../components/pagination";
 
 const CardCollection = () => {
 	const title = "Cards & Tankards - Card Collection";
 
-	// const sortedCardCollection = sortCards(cardData);
+	// all valid cards including tokens
 	const sortedCardCollection = sortCards(cardData).filter(
 		(card) => !card.Name.includes("_")
 	);
@@ -35,7 +34,7 @@ const CardCollection = () => {
 		faction: "",
 		cardType: "",
 		subType: "",
-		packType: [],
+		packType: "",
 	};
 	const [filter, setFilter] = useState(initialFilter);
 
@@ -50,60 +49,36 @@ const CardCollection = () => {
 	);
 
 	// handle search
+	const maxLength = 40;
 	const handleSearch = (e) => {
-		setSearchTerm(e.target.value);
-		setCurrentPage(1);
-	};
-	// const handleFilterChange = (e) => {
-	// 	const { name, value, checked } = e.target;
-	// 	// setFilter({ ...filter, [e.target.name]: e.target.value });
-	// 	setFilter((prevFilter) => ({
-	// 		...prevFilter,
-	// 		[name]: value,
-	// 	}));
-	// 	// reset subtype when type changes
-	// 	if (name === "cardType") {
-	// 		setFilter((prevFilter) => ({
-	// 			...prevFilter,
-	// 			subType: "",
-	// 		}));
-	// 		setResetSub(true);
-	// 	}
-	// 	setCurrentPage(1);
-	// };
-	const handleFilterChange = (e) => {
-		const { name, value, checked } = e.target;
+		let value = e.target.value;
 
-		if (name === "packType") {
-			// Handle multiple checkbox values for `packType`
-			setFilter((prevFilter) => {
-				const updatedPackTypes = checked
-					? [...prevFilter.packType, value] // Add to packType array if checked
-					: prevFilter.packType.filter((type) => type !== value); // Remove if unchecked
+		// Allow only alphanumeric char, "+","-", "/""
+		value = value.replace(/[^A-Za-z0-9+\-\/ ]/g, "");
 
-				return {
-					...prevFilter,
-					packType: updatedPackTypes, // Update the packType array in the filter state
-				};
-			});
-		} else {
-			// Handle single-value filters (cardType, subType, etc.)
-			setFilter((prevFilter) => ({
-				...prevFilter,
-				[name]: value, // Update the specific filter value
-			}));
+		if (value.length > maxLength) {
+			value = value.slice(0, maxLength);
 		}
 
-		// Reset subType when cardType changes
+		setSearchTerm(value);
+		setCurrentPage(1);
+	};
+
+	const handleFilterChange = (e) => {
+		const { name, value } = e.target;
+		// setFilter({ ...filter, [e.target.name]: e.target.value });
+		setFilter((prevFilter) => ({
+			...prevFilter,
+			[name]: value,
+		}));
+		// reset subtype when type changes
 		if (name === "cardType") {
 			setFilter((prevFilter) => ({
 				...prevFilter,
-				subType: "", // Reset subType value
+				subType: "",
 			}));
-			setResetSub(true); // Optional state to reset subType dropdown if needed
+			setResetSub(true);
 		}
-
-		// Reset the current page when filter changes
 		setCurrentPage(1);
 	};
 
@@ -126,7 +101,6 @@ const CardCollection = () => {
 		if (window.innerWidth > 640) {
 			document.body.style.paddingRight = "15px";
 		}
-		console.log(cardData);
 	};
 
 	const closeModal = () => {
@@ -162,6 +136,15 @@ const CardCollection = () => {
 		})),
 	];
 
+	const packType = [
+		{ label: "Expansion Set", value: "" },
+		...Object.entries(CardPackType).map(([idx, name]) => ({
+			label: name,
+			value: idx,
+		})),
+	];
+
+	//checks for cards with subtype
 	useEffect(() => {
 		let options = initialSubType;
 
@@ -215,35 +198,57 @@ const CardCollection = () => {
 						</p>
 					</div>
 				</header>
+				{/* search + filters */}
 				<section
 					role="search"
-					className="bg-gradient-to-b from-black via-black to-amber-900/[.75] mx-auto px-6 sm:px-0 pt-6 sm:pt-14 sm:pb-10 "
+					className="bg-gradient-to-b from-black via-black to-amber-900/[.75] mx-auto pt-6 sm:pt-14 pb-12 sm:pb-20 "
 				>
-					<div className="grid grid-rows-3 items-center justify-center mx-auto md:max-w-screen-md ">
-						<div className="relative pb-2 grid grid-cols-3 gap-x-2">
+					<div className="flex flex-col justify-self-center gap-y-6 w-full sm:w-fit px-6 sm:px-0 md:max-w-screen-md ">
+						<div className="relative grid grid-cols-3 gap-x-2">
 							<input
 								type="text"
 								id="search"
 								name="searchText"
+								maxLength={maxLength}
 								value={searchTerm}
 								onChange={handleSearch}
-								className="peer col-span-2 block px-2.5 py-2 w-full text-black bg-white border  rounded focus:outline-0 focus:outline-amber-500 focus:shadow-sm focus:border-amber-500 focus:shadow-amber-500"
-								placeholder=" " // Ensures placeholder is visible when empty
+								placeholder=" "
+								className="bg-white peer py-2 px-4 col-span-2 border shadow rounded focus:outline-0 focus:outline-amber-400 focus:shadow-sm focus:border-amber-500 focus:shadow-amber-500"
 							/>
 							<label
 								htmlFor="search"
-								className={`absolute text-sm ${searchTerm? 'text-amber-500 font-semibold':'text-neutral-700'} duration-200 transform -translate-y-4 scale-75 -top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-amber-500 peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-focus:-top-2 peer-focus:scale-75 peer-focus:-translate-y-4 `}
+								className={`absolute text-sm ${
+									searchTerm
+										? "text-amber-500 font-semibold"
+										: "text-neutral-700 hover:cursor-text"
+								} duration-200 transform -translate-y-4 scale-75 -top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-amber-500 peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-focus:-top-2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:hover:cursor-default`}
 							>
 								Search Card Text
 							</label>
 							<button
 								onClick={resetFilters}
-								className="cursor-pointer bg-amber-600  text-white py-2 px-4 rounded hover:bg-amber-700"
+								className="bg-amber-600  text-white py-2 px-4 rounded hover:bg-amber-700 hover:cursor-pointer"
 							>
 								Reset All
 							</button>
+							{/* tooltip */}
+							<div
+								className={`py-1 px-2 col-span-2 flex flex-wrap justify-between text-xs text-neutral-300 transition-opacity duration-200
+									${searchTerm ? "opacity-100" : "opacity-0"} peer-focus:opacity-100`}
+							>
+								<div className="">Allowed: A-Z, 0-9, +, -, /</div>
+								<div
+									className={`${
+										searchTerm.length >= maxLength
+											? "text-red-500 font-semibold"
+											: ""
+									}`}
+								>
+									{searchTerm.length}/{maxLength}
+								</div>
+							</div>
 						</div>
-						<div className="text-white grid grid-cols-2 gap-1 md:gap-2 md:mx-auto">
+						<div className="grid grid-cols-2 gap-y-2 gap-x-1 text-white w-full sm:w-96 mx-auto">
 							<Dropdown
 								name="manaCost"
 								options={manaCost}
@@ -263,6 +268,12 @@ const CardCollection = () => {
 								selectedValue={filter.cardType || ""}
 							/>
 							<Dropdown
+								name="packType"
+								options={packType}
+								onSelect={handleFilterChange}
+								selectedValue={filter.packType || ""}
+							/>
+							<Dropdown
 								name="subType"
 								options={subTypeOptions}
 								onSelect={handleFilterChange}
@@ -271,24 +282,10 @@ const CardCollection = () => {
 								resetSub={resetSub}
 							/>
 						</div>
-						<div className="grid grid-cols-2 gap-x-4 text-white md:flex md:justify-around">
-							{Object.entries(CardPackType).map(([key, value]) => {
-								return (
-									<Checkbox
-										key={key}
-										name="packType"
-										label={value}
-										value={key}
-										checked={filter.packType.includes(key)}
-										onChange={handleFilterChange}
-									/>
-								);
-							})}
-						</div>
 					</div>
 				</section>
+				{/* card grid */}
 				<div className="max-w-screen-xl mx-auto sm:min-h-[50svh]">
-					{/* card grid */}
 					{currentCards.length > 0 ? (
 						<div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 md:gap-y-12 overflow-clip py-14 md:py-28">
 							{currentCards.map((cardData) => {

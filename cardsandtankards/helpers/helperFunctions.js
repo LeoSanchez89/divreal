@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // ***************************************************************************
-// CARD DATA
+// CARD DATA KEY
 const FactionType = {
 	0: "Neutral",
 	1: "Auger Order",
@@ -12,7 +12,7 @@ const FactionType = {
 
 const CardPackType = {
 	0: "Core",
-	1: "Tutorial",
+	// 1: "Tutorial",
 	2: "Crusade of Sun and Stone",
 	3: "Ashes of Ur-Enku",
 };
@@ -208,34 +208,8 @@ const Debounce = (value, delay) => {
 	return debouncedValue;
 };
 
-// bold ability description text
-// const BoldedText = ({ text }) => {
-// 	// Regex to match words before ":"
-// 	const regex = /(\b\w+(?:\s\w+)?)(:)/g;
-
-// 	// split the text while retaining the matches
-// 	const parts = [];
-// 	let lastIndex = 0;
-// 	text.replace(regex, (match, p1, p2, index) => {
-// 		// push the text before the match
-// 		if (index > lastIndex) {
-// 			parts.push(text.slice(lastIndex, index));
-// 		}
-// 		// push the bolded word and colon
-// 		parts.push(<strong key={index}>{p1}</strong>, p2);
-// 		// update the last index
-// 		lastIndex = index + match.length;
-// 	});
-
-// 	// push any remaining text after the last match
-// 	if (lastIndex < text.length) {
-// 		parts.push(text.slice(lastIndex));
-// 	}
-// 	return <span>{parts}</span>;
-// };
-
 // filter search terms w/debounce
-const filterCards = (cards, debouncedSearchTerm = "", filter, manCostAndFactionOnly = false) => {
+const filterCards = (cards, debouncedSearchTerm, filter) => {
 	return cards.filter((card) => {
 		const matchesSearch =
 			card.Name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
@@ -257,14 +231,12 @@ const filterCards = (cards, debouncedSearchTerm = "", filter, manCostAndFactionO
 			? card.FactionType === Number(filter.faction)
 			: true;
 
-		if (manCostAndFactionOnly) {
-			return matchesManaCost && matchesFaction;
-		}
 		const matchesCardType = filter.cardType
 			? card.CardType === Number(filter.cardType)
 			: true;
 
-		const matchesPackType = filter.packType.length
+		// ** fix for deck builder**
+		const matchesPackType = filter.packType
 			? filter.packType.includes(card.CardPackType.toString())
 			: true;
 
@@ -399,70 +371,6 @@ const parseDescription = (description) => {
 
 	return matchingKeywords;
 };
-
-// const parseDescription = (description) => {
-// 	const keywords = Object.values(CardKeyword);
-
-// 	// Split CamelCase into individual words
-// 	const splitCamelCase = (str) => {
-// 		return str.replace(/([a-z])([A-Z])/g, "$1 $2").split(" ");
-// 	};
-
-// 	// Check if keyword is multi-word (CamelCased)
-// 	const isMultiWord = (keyword) => /[A-Z].*[A-Z]/.test(keyword);
-
-// 	// Separate multi-word (CamelCased) keywords
-// 	const multiWordKeywords = keywords.filter(isMultiWord).map((keyword) => ({
-// 		original: keyword,
-// 		words: splitCamelCase(keyword),
-// 	}));
-
-// 	// Split Description into an array of separate words
-// 	const descriptionWords = description.match(/\b[\w]+(?:[:.])?\b/g) || [];
-
-// 	// Clean trailing punctuation from words
-// 	const cleanedDescriptionWords = descriptionWords.map((word) =>
-// 		word.replace(/[.:]$/, "")
-// 	);
-
-// 	console.log(cleanedDescriptionWords); // Debugging
-
-// 	// Check if a keyword's words exist sequentially in the description
-// 	const containsKeyword = (descriptionWords, keywordWords) => {
-// 		for (let i = 0; i <= descriptionWords.length - keywordWords.length; i++) {
-// 			let match = true;
-// 			for (let j = 0; j < keywordWords.length; j++) {
-// 				if (descriptionWords[i + j] !== keywordWords[j]) {
-// 					match = false;
-// 					break;
-// 				}
-// 			}
-// 			if (match) return true;
-// 		}
-// 		return false;
-// 	};
-
-// 	// Check for multi-word matches
-// 	const matchingMultiWordKeywords = multiWordKeywords.filter(({ words }) =>
-// 		containsKeyword(cleanedDescriptionWords, words)
-// 	);
-
-// 	console.log("multi word:", matchingMultiWordKeywords); // Debugging
-
-// 	// Check for single-word matches
-// 	const matchingSingleWordKeywords = keywords.filter(
-// 		(keyword) =>
-// 			!isMultiWord(keyword) && cleanedDescriptionWords.includes(keyword)
-// 	);
-
-// 	// Combine results and return them
-// 	const matchingKeywords = [
-// 		...matchingMultiWordKeywords.map(({ original }) => original),
-// 		...matchingSingleWordKeywords,
-// 	];
-
-// 	return matchingKeywords;
-// };
 
 // *******ENCODER / DECODER*******
 
